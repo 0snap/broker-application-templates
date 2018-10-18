@@ -14,11 +14,11 @@ int main() {
 
     // polling is not the medium of choice for true async. we need to find a way to terminate and not run forever (for this demo at least)
     for (int round = 0; round < 10; round++) {
-        std::cout << "poll..."  << std::endl;
+        std::cout << "main loop busy poll..."  << std::endl;
         for (auto &msg : subscriber.poll()) {
             broker::topic topic(std::move(msg.first));
-            bro::Event response(std::move(msg.second));
-            std::cout << "received on topic: " << topic << "     response event name: " << response.name() << "    content: " << response.args() << std::endl;
+            bro::Event event(std::move(msg.second));
+            std::cout << "received on topic: " << topic << "     event name: " << event.name() << "    content: " << event.args() << std::endl;
         }
         sleep(1);
     }
