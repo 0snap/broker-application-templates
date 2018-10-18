@@ -7,8 +7,8 @@ This repo provides some general purpose templates to write applications, that co
 
 The project is structured as follows (see the folders):
 
-- apps that send to a `bro` ([apps-to-bro](apps-to-bro))
-- apps that receive from a `bro` ([bro-to-apps](bro-to-apps))
+- apps that send to a `bro` ([app-to-bro](app-to-bro))
+- apps that receive from a `bro` ([bro-to-app](bro-to-app))
 - apps that communicate solely via `broker`, without any `bro` instance ([standalone-apps](standalone-apps))
 
 ## Install
