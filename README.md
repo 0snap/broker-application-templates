@@ -5,6 +5,12 @@
 
 This repo provides some general purpose templates to write applications, that communicate via broker.
 
+The project is structured as follows (see the folders):
+
+- apps that send to a `bro` ([apps-to-bro](apps-to-bro))
+- apps that receive from a `bro` ([bro-to-apps](bro-to-apps))
+- apps that communicate solely via `broker`, without any `bro` instance ([standalone-apps](standalone-apps))
+
 ## Install
 
 You need to install `broker`. Please refer to the official docs for any details. Also see the Dockerfile for an example.
@@ -19,20 +25,20 @@ When calling `make install` with the default configuration it will put the share
 
 ## Usage
 
-Each directory comes with at least 3 files:
+Each directory comes with 2 application files
 
-- a `.bro` file, that instructs bro how to handle incoming events
 - a python application
 - a c++ application
-
-When you want to have a bro IDS to handle the events, you need to install bro. Or you put that into a container as well.
 
 Compile the C++ files with
 
     g++ -std=c++11 -lbroker -lcaf_core -lcaf_io -lcaf_openssl -o <executable name> <source.cc>
 
+
+Optionally, you will find one or more `.bro` scripts in there, in case the example app is communicating to a `bro` instance. To use those `.bro` scripts you need to install bro. Or you put that into a container as well.
+
 ### Bro 
 
-In case you have a bro installed, run the scripts with (example):
+In case you have a bro installed, run the scripts with (example call):
 
     /usr/local/bro/bin/bro ping-pong/ping_pong.bro
