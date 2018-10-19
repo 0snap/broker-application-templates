@@ -14,6 +14,7 @@ void broker_receiver() {
 
     while(true) {
         // block the current thread until a message gets available
+        // we could also use select, see the threaded python example
         auto msg = subscriber.get();
 
         broker::topic topic(std::move(msg.first));
