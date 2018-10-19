@@ -10,11 +10,11 @@ event Broker::peer_added(endpoint: Broker::EndpointInfo, msg: string) {
 	print "will send some greetings";
 
 	local i = 0.0;
-	while (i < 20) {
+	while (i < 10) {
 
 		## creating this event will auto publish it (see the bro_init event)
 		schedule double_to_interval(i) { greet("hi there") };
-        i = i + 1.0;
+        i = i + 0.5;
 	}
 
 	## schedule the greet event to be invoked in 21sec in the future (for the demo's sake to see the polling of the receiver)
