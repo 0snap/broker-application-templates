@@ -23,7 +23,7 @@ def broker_receiver():
         received_event = broker.bro.Event(data)
         print("received on topic: {}    event name: {}    content: {}".format(topic, received_event.name(), received_event.args()))
 
-## fork awai a thread to receive messages via broker
+## fork away a thread to receive messages via broker
 thread = threading.Thread(target=broker_receiver, daemon=True)
 thread.start()
 
